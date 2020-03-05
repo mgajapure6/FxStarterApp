@@ -1,0 +1,34 @@
+#root {
+    -fx-background-color: #333333;
+    -fx-padding: 1px;
+}
+#mainToolBar {
+    -fx-padding: 10px;
+    -fx-background-image: url("img/top-bar.png");
+    -fx-background-size: cover;
+    -fx-background-position: left top;
+    -fx-background-repeat: no-repeat;
+}
+
+#page-splitpane {
+    -fx-background-color: null;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+#page-splitpane *.split-pane-divider{
+    -fx-padding: 0 1 0 0;
+    -fx-background-color: transparent, #333333;
+    -fx-background-insets: 0 -3 0 -3, 0;
+    -fx-border-color: null;
+}
+#page-splitpane *.horizontal-grabber {
+    -fx-padding: 0;
+    -fx-shape: "";
+}
+
+.application .noborder-scroll-pane > * > .scroll-bar:vertical {
+    -fx-padding: -1.0 -1.0 12 0.0;
+}
+.application .web-view-window-corner .scroll-bar:vertical {
+    -fx-padding: 0 0 12 0;
+}
