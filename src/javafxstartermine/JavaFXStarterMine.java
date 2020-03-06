@@ -19,7 +19,7 @@ public class JavaFXStarterMine extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MainFxml.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add(JavaFXStarterMine.class.getResource("main.css").toExternalForm());

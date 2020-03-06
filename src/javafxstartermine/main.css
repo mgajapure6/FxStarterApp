@@ -1,5 +1,5 @@
 #root {
-    -fx-background-color: #333333;
+/*    -fx-background-color: #333333;*/
     -fx-padding: 1px;
 }
 #mainToolBar {
@@ -31,4 +31,23 @@
 }
 .application .web-view-window-corner .scroll-bar:vertical {
     -fx-padding: 0 0 12 0;
+}
+
+
+.sm-title{
+    -fx-text-fill : #7c7c7c;
+    -fx-font-size : 14px;
+    -fx-font-weight : 900;
+}
+
+.side-nav .label{
+    -fx-font-size : 14px;
+}
+
+.el{
+    -fx-font-size : 14px;
+}
+
+.tab-btn{
+    -fx-padding : 8px 30px;
 }
