@@ -117,5 +117,31 @@
 				"url": "app/sales/customerMaster"
 			}
 		]
+	},
+        {
+		"module_name": "Gahan / Loan",
+		"isLink": false,
+		"menu" : [
+			{
+				"menu_name": "Gahan / Loan Master",
+				"isLink":true,
+				"url": "gahan/GahanMaster.fxml"
+			},
+			{
+				"menu_name": "Gahan / Loan Customers",
+				"isLink":true,
+				"url": "gahan/GahanCustomer.fxml"
+			},
+			{
+				"menu_name": "Gahan / Loan Items",
+				"isLink":true,
+				"url": "gahan/GahanItems.fxml"
+			},
+			{
+				"menu_name": "Gahan / Loan Report",
+				"isLink":true,
+				"url": "gahan/GahanReport.fxml"
+			}
+		]
 	}
 ]
