@@ -51,3 +51,7 @@
 .tab-btn{
     -fx-padding : 8px 30px;
 }
+
+.t-right{
+    -fx-text-alignment: right;
+}
