@@ -19,7 +19,7 @@
     <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab closable="false" text="Girvi / Gahan / Loan List">
+          <Tab closable="false" text="Girvi / Loan List">
                <content>
                   <VBox>
                      <children>
@@ -36,10 +36,9 @@
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <TableView prefHeight="200.0" prefWidth="200.0" styleClass="el" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="listTableView" prefHeight="200.0" prefWidth="200.0" styleClass="el" VBox.vgrow="ALWAYS">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn prefWidth="75.0" text="#" />
                           </columns>
                         </TableView>
                      </children>
@@ -53,7 +52,7 @@
                   <String fx:value="tab-btn" />
                </styleClass>
           </Tab>
-          <Tab closable="false" text="Add Gahan">
+          <Tab closable="false" text="Add Giravi / Loan">
             <content>
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
@@ -137,17 +136,22 @@
                                     <Label styleClass="sm-title" text="Add Giravi Items" />
                                  </children>
                               </VBox>
-                              <VBox layoutX="10.0" layoutY="10.0">
+                              <HBox spacing="10.0">
                                  <children>
-                                  <Button mnemonicParsing="false" styleClass="el" text="+ Add Item" />
+                                    <Button fx:id="addItemBtn" mnemonicParsing="false" styleClass="el" text="+ Add Item" />
                                  </children>
-                              </VBox>
+                              </HBox>
                            </children>
                         </HBox>
-                        <TableView editable="true" prefHeight="200.0" prefWidth="200.0">
+                        <TableView fx:id="girviItemTableView" editable="true">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn fx:id="snGirviItemTableCol" maxWidth="1000.0" prefWidth="1000.0" text="#" />
+                            <TableColumn fx:id="itemGirviItemTableCol" text="Item" />
+                            <TableColumn fx:id="qtyGirviItemTableCol" maxWidth="1000.0" prefWidth="1000.0" text="Qty" />
+                            <TableColumn fx:id="gWeightGirviItemTableCol" maxWidth="3000.0" prefWidth="3000.0" text="Gross Weight" />
+                            <TableColumn fx:id="nWeightGirviItemTableCol" maxWidth="3000.0" prefWidth="3000.0" text="Net Weight" />
+                            <TableColumn fx:id="valuationGirviItemTableCol" maxWidth="2000.0" prefWidth="2000.0" text="Valuation" />
+                            <TableColumn fx:id="imgGirviItemTableCol" maxWidth="1000.0" prefWidth="1000.0" text="Image" />
                           </columns>
                         </TableView>
                         <HBox alignment="CENTER_RIGHT" spacing="10.0" style="-fx-border-color: #ccc; -fx-border-width: 0 0 1 0;">

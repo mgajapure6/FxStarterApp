@@ -10,6 +10,13 @@
     -fx-background-repeat: no-repeat;
 }
 
+.black-bg{
+    -fx-background-image: url("img/top-bar.png");
+    -fx-background-size: cover;
+    -fx-background-position: left top;
+    -fx-background-repeat: no-repeat;
+}
+
 #page-splitpane {
     -fx-background-color: null;
     -fx-background-insets: 0;

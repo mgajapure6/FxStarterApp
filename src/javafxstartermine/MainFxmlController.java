@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,13 +63,15 @@ public class MainFxmlController implements Initializable {
     BorderPane rightSplitPane;
 
     JsonParser parser;
-    
+
     private Label pageTitle = new Label();
     private Label navTitle = new Label();
+    private ImageView loading = null;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         root.getStyleClass().add("application");
+
         ToolBar toolBar = new ToolBar();
         toolBar.setId("mainToolBar");
         ImageView logo = new ImageView(new Image(MainFxmlController.class.getResourceAsStream("img/logo.png")));
@@ -85,13 +88,28 @@ public class MainFxmlController implements Initializable {
         toolBar.setMaxHeight(66);
         GridPane.setConstraints(toolBar, 0, 0);
 
-        ToolBar pageToolBar = new ToolBar();
-        pageToolBar.setId("page-toolbar");
-        pageToolBar.setMinHeight(29);
-        pageToolBar.setMaxSize(Double.MAX_VALUE, Control.USE_PREF_SIZE);
+        ToolBar pageTopToolBar = new ToolBar();
+        pageTopToolBar.setId("page-toolbar");
+        pageTopToolBar.setMinHeight(29);
+        pageTopToolBar.setMaxSize(Double.MAX_VALUE, Control.USE_PREF_SIZE);
         pageTitle.setText("Dashboard");
         pageTitle.getStyleClass().add("sm-title");
-        pageToolBar.getItems().add(pageTitle);
+        pageTopToolBar.getItems().add(pageTitle);
+
+        Region spacer1 = new Region();
+        HBox.setHgrow(spacer1, Priority.ALWAYS);
+        pageTopToolBar.getItems().add(spacer1);
+
+        loading = new ImageView(new Image(MainFxmlController.class.getResourceAsStream("img/loading.gif")));
+        loading.setVisible(false);
+        pageTopToolBar.getItems().add(loading);
+
+        ToolBar pageBottomToolBar = new ToolBar();
+        pageBottomToolBar.getStyleClass().add("black-bg");
+        pageBottomToolBar.setId("page-toolbar");
+        pageBottomToolBar.setMinHeight(20);
+        pageBottomToolBar.setMaxSize(Double.MAX_VALUE, Control.USE_PREF_SIZE);
+        
 
         ToolBar pageTreeToolBar = new ToolBar();
         pageTreeToolBar.setMinHeight(29);
@@ -179,7 +197,8 @@ public class MainFxmlController implements Initializable {
         SplitPane.setResizableWithParent(leftBorderPane, Boolean.FALSE);
 
         rightSplitPane = new BorderPane();
-        rightSplitPane.setTop(pageToolBar);
+        rightSplitPane.setTop(pageTopToolBar);
+        rightSplitPane.setBottom(pageBottomToolBar);
         //rightSplitPane.setCenter(pageArea);
 
         SplitPane splitPane = new SplitPane();
@@ -229,21 +248,46 @@ public class MainFxmlController implements Initializable {
     }
 
     public void changeScreen(String fxml) {
+        rightSplitPane.setCenter(null);
+        loading.setVisible(true);
         URL url = getClass().getResource(fxml);
         if (url != null) {
-            try {
-                rightSplitPane.setCenter(FXMLLoader.load(getClass().getResource(fxml)));
-            } catch (IOException ex) {
-
-                Logger.getLogger(MainFxmlController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            setTimeout(() -> {
+                Platform.runLater(() -> {
+                    try {
+                        rightSplitPane.setCenter(FXMLLoader.load(getClass().getResource(fxml)));
+                        loading.setVisible(false);
+                    } catch (IOException ex) {
+                        loading.setVisible(false);
+                        Logger.getLogger(MainFxmlController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+            }, 1000);
         } else {
-            try {
-                rightSplitPane.setCenter(FXMLLoader.load(getClass().getResource("error/Error.fxml")));
-            } catch (IOException exx) {
-                Logger.getLogger(MainFxmlController.class.getName()).log(Level.SEVERE, null, exx);
-            }
+            setTimeout(() -> {
+                Platform.runLater(() -> {
+                    try {
+                        rightSplitPane.setCenter(FXMLLoader.load(getClass().getResource("error/Error.fxml")));
+                        loading.setVisible(false);
+                    } catch (IOException exx) {
+                        loading.setVisible(false);
+                        Logger.getLogger(MainFxmlController.class.getName()).log(Level.SEVERE, null, exx);
+                    }
+                });
+            }, 1000);
         }
+    }
+
+    public static void setTimeout(Runnable runnable, int delay) {
+        new Thread(() -> {
+            try {
+                Thread.sleep(delay);
+                runnable.run();
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+        }).start();
+
     }
 
 }

@@ -24,6 +24,7 @@ public class JavaFXStarterMine extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(JavaFXStarterMine.class.getResource("main.css").toExternalForm());
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
