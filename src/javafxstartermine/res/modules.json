@@ -119,26 +119,26 @@
 		]
 	},
         {
-		"module_name": "Gahan / Loan",
+		"module_name": "Giravi / Loan",
 		"isLink": false,
 		"menu" : [
 			{
-				"menu_name": "Gahan / Loan Master",
+				"menu_name": "Giravi / Loan Master",
 				"isLink":true,
 				"url": "gahan/GahanMaster.fxml"
 			},
 			{
-				"menu_name": "Gahan / Loan Customers",
+				"menu_name": "Giravi / Loan Customers",
 				"isLink":true,
 				"url": "gahan/GahanCustomer.fxml"
 			},
 			{
-				"menu_name": "Gahan / Loan Items",
+				"menu_name": "Giravi / Loan Items",
 				"isLink":true,
 				"url": "gahan/GahanItems.fxml"
 			},
 			{
-				"menu_name": "Gahan / Loan Report",
+				"menu_name": "Giravi / Loan Report",
 				"isLink":true,
 				"url": "gahan/GahanReport.fxml"
 			}

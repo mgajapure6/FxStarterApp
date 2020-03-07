@@ -7,7 +7,11 @@ package javafxstartermine.gahan;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 
 /**
  * FXML Controller class
@@ -16,12 +20,21 @@ import javafx.fxml.Initializable;
  */
 public class GahanMasterController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    DatePicker startDatePicker;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        startDatePicker.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldValue, Boolean newValue) {
+                if (newValue) {
+                    startDatePicker.show();
+                } else {
+                    startDatePicker.hide();
+                }
+            }
+        });
+    }
+
 }

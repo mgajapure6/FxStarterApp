@@ -73,7 +73,7 @@
                               <VBox>
                                  <children>
                                     <Label styleClass="el" text="Loan Start Date" />
-                                    <DatePicker prefWidth="350.0" promptText="Start Date" styleClass="el" />
+                                    <DatePicker fx:id="startDatePicker" prefWidth="350.0" promptText="Start Date" styleClass="el" />
                                  </children>
                               </VBox>
                               <VBox>
